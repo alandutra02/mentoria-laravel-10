@@ -6,11 +6,5 @@ use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
 {
-    function index() {
-        return 'Produtos';
-    }
-    
-    function adicionar() {
-        return 'adicionar';
-    }
+    //
 }
