@@ -1,6 +1,9 @@
 <?php
 
+
+use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/', function() {
     return view('index');
+});
+
+
+Route::get('/laravel', function () {
+    return view('welcome');
+});
+
+
+# http://localhost:8989/Produtos/adicionar
+Route::prefix('produtos')->group(function () {
+    Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
+   // Route::get('adicionar', [PodutosController::class, 'adicionar'])->name('produto.adicionar');
 });
