@@ -16,7 +16,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('produto.index') }}">
                     <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Productos
+                    Produtos
                 </a>
             </li>
             <li class="nav-item">
