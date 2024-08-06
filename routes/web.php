@@ -1,9 +1,7 @@
 <?php
 
-
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +28,5 @@ Route::get('/laravel', function () {
 # http://localhost:8989/Produtos/adicionar
 Route::prefix('produtos')->group(function () {
     Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
-   // Route::get('adicionar', [PodutosController::class, 'adicionar'])->name('produto.adicionar');
+    Route::delete('/delete', [ProdutosController::class, 'delete'])->name('produto.delete');
 });

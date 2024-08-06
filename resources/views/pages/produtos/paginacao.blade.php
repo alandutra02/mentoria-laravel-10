@@ -1,6 +1,6 @@
 @extends('index')
 
-
+@section('title', 'Gestão')
 @section('content')
 <div
     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -15,6 +15,9 @@
         </a>
     </form>
         <div class="table-responsive">
+            @if ($findProduto->isEmpty())
+            <p></br>Não existe dados</p>
+            @else
             <table class="table table-striped table-sm">
                <thead>
                     <tr>
@@ -32,7 +35,15 @@
                             <a href="" class="btn btn-light btn-sm">
                                 Editar
                             </a>
-                            <a href="" class="btn btn-danger btn-sm">
+                            {{-- o meta abaixo deve ser posto antes do botão excluir porque o meta que vai
+                            passar um token da sessão para o laravel autorizar requisição externa com ajax. 
+                            Sempre que usar ajax, deve se fazer esse fluxo. Deve-se colocar este token no header
+                            da seção, que no nosso caso está no arquivo public->js->projeto.js para o laravel
+                            poder autorizar. o laravel traz um token aleatório através da funcão que está
+                            dentro de content, content=" {{ csrf_token() }} --}}
+                            <meta name='csrf-token' content=" {{ csrf_token() }} "/>
+                            <a onclick="deleteRegistroPaginacao( ' {{ route('produto.delete') }} ', {{ $produto->id }} )"
+                            class="btn btn-danger btn-sm">
                                 Excluir
                             </a>
                         </td>
@@ -40,6 +51,7 @@
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
 </div>
 @endsection
