@@ -24,6 +24,9 @@ Route::get('/laravel', function () {
     return view('welcome');
 });
 
+route::get('/teste', function(){
+    return view('teste');
+});
 
 # http://localhost:8989/Produtos/adicionar
 Route::prefix('produtos')->group(function () {
